@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<!-- saved from url=(0046)file:///Users/dlulululu/Downloads/index_5.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Xilan Odyssey · Xilankapu Pixel Bead Pop-Up Book</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;700;900&family=Share+Tech+Mono&display=swap');
+
+:root {
+  --black:#0A0A0F; --deep:#111119; --card:#16161F;
+  --crimson:#C8253A; --gold:#F2C12E; --blue:#2E5FA3;
+  --cyan:#00E5FF; --purple:#7B3FA0; --white:#F0EEE8; --dim:#888899;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--black);color:var(--white);font-family:'Noto Sans SC',sans-serif;overflow-x:hidden;}
+
+body::before{content:'';position:fixed;inset:0;
+  background-image:linear-gradient(rgba(0,229,255,.018) 1px,transparent 1px),
+  linear-gradient(90deg,rgba(0,229,255,.018) 1px,transparent 1px);
+  background-size:32px 32px;pointer-events:none;z-index:0;}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:300;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:13px 48px;
+  background:rgba(10,10,15,.94);backdrop-filter:blur(16px);
+  border-bottom:1px solid rgba(255,255,255,.07);
+  font-family:'Share Tech Mono',monospace;font-size:11px;letter-spacing:2px;}
+.nav-logo{color:var(--gold);font-size:13px;display:flex;align-items:center;gap:8px;text-decoration:none;}
+.nav-logo em{color:var(--cyan);font-style:normal;}
+nav ul{list-style:none;display:flex;gap:24px;}
+nav a{color:var(--dim);text-decoration:none;transition:color .2s;}
+nav a:hover{color:var(--cyan);}
+
+#hero{min-height:100vh;position:relative;overflow:hidden;display:flex;align-items:flex-end;padding-bottom:90px;}
+.hero-slides{position:absolute;inset:0;}
+.hs{position:absolute;inset:0;opacity:0;transition:opacity 1.4s ease;background-size:cover;background-position:center;}
+.hs.on{opacity:1;}
+.hs::after{content:'';position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(10,10,15,1) 0%,rgba(10,10,15,.55) 45%,rgba(10,10,15,.1) 100%);}
+#ptcl{position:absolute;inset:0;pointer-events:none;z-index:1;}
+.pd{position:absolute;border-radius:0;animation:fpx linear infinite;opacity:0;}
+@keyframes fpx{0%{transform:translateY(100vh);opacity:0;}10%{opacity:.7;}90%{opacity:.7;}100%{transform:translateY(-60px);opacity:0;}}
+
+.hero-inner{position:relative;z-index:2;max-width:1120px;margin:0 auto;padding:0 48px;width:100%;}
+.h-eye{font-family:'Share Tech Mono',monospace;font-size:11px;letter-spacing:4px;color:var(--cyan);margin-bottom:18px;display:flex;align-items:center;gap:10px;}
+.h-eye::before{content:'▶';}
+h1{font-size:clamp(54px,9.5vw,118px);font-weight:900;line-height:.95;letter-spacing:-3px;}
+h1 .g{color:var(--gold);}
+.h-sub{font-family:'Share Tech Mono',monospace;font-size:clamp(11px,1.5vw,15px);letter-spacing:5px;color:var(--crimson);margin-top:12px;text-shadow:0 0 18px rgba(200,37,58,.7);}
+.h-desc{font-size:15px;color:rgba(240,238,232,.68);line-height:1.85;max-width:500px;margin-top:22px;}
+.h-btns{display:flex;gap:12px;margin-top:34px;flex-wrap:wrap;}
+.btn{padding:13px 28px;font-family:'Share Tech Mono',monospace;font-size:11px;letter-spacing:2px;text-decoration:none;cursor:pointer;border:none;display:inline-flex;align-items:center;gap:8px;transition:all .15s;}
+.btn-r{background:var(--crimson);color:#fff;clip-path:polygon(5px 0%,100% 0%,calc(100% - 5px) 100%,0% 100%);}
+.btn-r:hover{background:var(--gold);color:var(--black);transform:translateY(-2px);}
+.btn-c{background:transparent;color:var(--cyan);border:1px solid rgba(0,229,255,.5);}
+.btn-c:hover{background:rgba(0,229,255,.1);border-color:var(--cyan);}
+
+.h-dots{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);display:flex;gap:6px;z-index:2;}
+.h-dot{width:6px;height:2px;background:rgba(255,255,255,.25);cursor:pointer;transition:all .3s;}
+.h-dot.on{width:22px;background:var(--gold);}
+.h-sc{position:absolute;bottom:32px;right:48px;font-family:'Share Tech Mono',monospace;font-size:9px;letter-spacing:3px;color:var(--dim);z-index:2;animation:blink 2s ease-in-out infinite;}
+@keyframes blink{0%,100%{opacity:.3;}50%{opacity:.9;}}
+
+.div{height:1px;background:repeating-linear-gradient(90deg,var(--crimson) 0,var(--crimson) 6px,transparent 6px,transparent 12px,var(--gold) 12px,var(--gold) 18px,transparent 18px,transparent 24px);opacity:.3;}
+
+section{position:relative;z-index:1;}
+.w{max-width:1120px;margin:0 auto;padding:92px 48px;}
+.eye{font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:4px;color:var(--cyan);margin-bottom:12px;display:flex;align-items:center;gap:10px;}
+.eye::before{content:'';width:24px;height:2px;background:var(--cyan);flex-shrink:0;}
+.stitle{font-size:clamp(26px,4vw,44px);font-weight:900;line-height:1.1;margin-bottom:16px;}
+.stitle .g{color:var(--gold);} .stitle .r{color:var(--crimson);}
+.sbody{font-size:15px;line-height:1.9;color:rgba(240,238,232,.75);max-width:660px;}
+
+#history{background:var(--deep);}
+.hgrid{display:grid;grid-template-columns:1fr 1fr;gap:44px;margin-top:44px;align-items:start;}
+.hcard{background:rgba(200,37,58,.07);border:1px solid rgba(200,37,58,.16);padding:26px;position:relative;}
+.hcard::before{content:'';position:absolute;top:-1px;left:-1px;width:16px;height:16px;border-top:2px solid var(--crimson);border-left:2px solid var(--crimson);}
+.hcard::after{content:'';position:absolute;bottom:-1px;right:-1px;width:16px;height:16px;border-bottom:2px solid var(--gold);border-right:2px solid var(--gold);}
+.hcard h3{font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:2px;color:var(--gold);margin-bottom:13px;text-transform:uppercase;}
+.hcard p{font-size:13.5px;color:rgba(240,238,232,.7);line-height:1.88;margin-bottom:10px;}
+.tline{display:flex;flex-direction:column;}
+.ti{display:grid;grid-template-columns:80px 1fr;gap:12px;padding:13px 0;border-bottom:1px solid rgba(255,255,255,.055);}
+.ty{font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--cyan);padding-top:1px;}
+.tt{font-size:13px;color:rgba(240,238,232,.65);line-height:1.7;}
+.tt strong{color:var(--white);}
+
+#process{background:var(--black);}
+.steps{margin-top:52px;}
+.step{display:grid;grid-template-columns:56px 1fr 340px;gap:24px 32px;padding:32px 0;border-bottom:1px solid rgba(255,255,255,.05);align-items:start;transition:padding-left .25s;}
+.step:hover{padding-left:12px;}
+.sn{font-family:'Share Tech Mono',monospace;font-size:44px;font-weight:700;color:rgba(255,255,255,.05);line-height:1;transition:color .3s;}
+.step:hover .sn{color:rgba(242,193,46,.16);}
+.stag{font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:3px;color:var(--cyan);display:block;margin-bottom:9px;}
+.step h3{font-size:20px;margin-bottom:9px;}
+.step p{font-size:13.5px;color:rgba(240,238,232,.65);line-height:1.85;}
+.pills{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
+.pill{padding:3px 10px;font-family:'Share Tech Mono',monospace;font-size:9px;letter-spacing:1px;border:1px solid;}
+.pr{border-color:var(--crimson);color:var(--crimson);}
+.pg{border-color:var(--gold);color:var(--gold);}
+.pc{border-color:var(--cyan);color:var(--cyan);}
+.pp{border-color:var(--purple);color:var(--purple);}
+.pb{border-color:var(--blue);color:var(--blue);}
+
+.simg{position:relative;overflow:hidden;background:#13131a;cursor:pointer;border:1px solid rgba(255,255,255,.07);}
+.simg img{width:100%;display:block;aspect-ratio:16/10;object-fit:cover;filter:saturate(.85);transition:transform .4s,filter .4s;}
+.simg:hover img{transform:scale(1.05);filter:saturate(1.1);}
+.simg-cap{position:absolute;bottom:0;left:0;right:0;padding:10px 14px;background:linear-gradient(to top,rgba(10,10,15,.92),transparent);font-family:'Share Tech Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--cyan);}
+
+#beads{background:var(--deep);}
+.btop{display:grid;grid-template-columns:1fr 1fr;gap:44px;margin-top:44px;align-items:center;}
+.bvis{position:relative;overflow:hidden;background:#0e0e15;cursor:pointer;}
+.bvis img{width:100%;display:block;filter:saturate(1.1) contrast(1.03);}
+.bvis .co{position:absolute;width:22px;height:22px;}
+.bvis .co.tl{top:7px;left:7px;border-top:2px solid var(--gold);border-left:2px solid var(--gold);}
+.bvis .co.br{bottom:7px;right:7px;border-bottom:2px solid var(--crimson);border-right:2px solid var(--crimson);}
+.binf h3{font-size:20px;margin-bottom:13px;}
+.binf p{font-size:13.5px;color:rgba(240,238,232,.7);line-height:1.88;margin-bottom:11px;}
+.bstats{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:20px;}
+.bst{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);padding:13px;}
+.bst .v{font-family:'Share Tech Mono',monospace;font-size:24px;font-weight:700;color:var(--gold);display:block;}
+.bst .l{font-size:11px;color:var(--dim);margin-top:2px;display:block;}
+
+.d4{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:32px;}
+.gi{position:relative;overflow:hidden;cursor:pointer;background:#1a1a22;}
+.gi img{width:100%;display:block;aspect-ratio:4/3;object-fit:cover;filter:saturate(.85);transition:transform .4s,filter .4s;}
+.gi:hover img{transform:scale(1.06);filter:saturate(1.15);}
+.gi-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,10,15,.92) 0%,transparent 55%);opacity:0;transition:opacity .3s;display:flex;flex-direction:column;justify-content:flex-end;padding:14px;}
+.gi:hover .gi-ov{opacity:1;}
+.gi-ov .lbl{font-family:'Share Tech Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--cyan);}
+.gi-ov .ttl{font-size:12px;font-weight:700;color:var(--white);margin-top:2px;}
+
+#popup{background:var(--black);}
+.chaps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px;}
+.ch{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);padding:24px;position:relative;transition:all .3s;}
+.ch:hover{border-color:rgba(200,37,58,.38);background:rgba(200,37,58,.05);transform:translateY(-4px);}
+.ch-n{font-family:'Share Tech Mono',monospace;font-size:9px;letter-spacing:3px;color:var(--crimson);display:block;margin-bottom:9px;}
+.ch h3{font-size:14px;margin-bottom:7px;}
+.ch p{font-size:11.5px;color:rgba(240,238,232,.55);line-height:1.8;}
+.ch-ico{position:absolute;top:16px;right:16px;font-size:20px;opacity:.3;}
+
+.spread{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:32px;}
+.sp{position:relative;background:#111118;overflow:hidden;cursor:pointer;}
+.sp img{width:100%;display:block;filter:saturate(.88);transition:filter .35s,transform .35s;}
+.sp:hover img{filter:saturate(1.18);transform:scale(1.04);}
+.sp-cap{position:absolute;bottom:0;left:0;right:0;padding:12px 16px;background:linear-gradient(to top,rgba(10,10,15,.94),transparent);font-size:10px;color:rgba(240,238,232,.8);font-family:'Share Tech Mono',monospace;letter-spacing:1px;}
+.sp-cap .t{color:var(--gold);margin-right:5px;}
+.sp.w2{grid-column:span 2;}
+.sp.w3{grid-column:span 3;}
+
+#ar{background:var(--deep);}
+.ar-showcase{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:40px;}
+.arc{position:relative;overflow:hidden;background:#0d0d14;cursor:pointer;}
+.arc img{width:100%;display:block;filter:saturate(1.05);transition:transform .45s,filter .45s;}
+.arc:hover img{transform:scale(1.04);filter:saturate(1.2);}
+.arc.big{grid-column:span 2;}
+.arc-cap{position:absolute;bottom:0;left:0;right:0;padding:20px 22px;background:linear-gradient(to top,rgba(10,10,15,.96) 0%,rgba(10,10,15,.4) 60%,transparent 100%);}
+.arc-badge{font-family:'Share Tech Mono',monospace;font-size:9px;letter-spacing:3px;color:var(--cyan);display:inline-block;margin-bottom:6px;}
+.arc-cap h3{font-size:16px;font-weight:700;margin-bottom:5px;}
+.arc-cap p{font-size:12px;color:rgba(240,238,232,.6);line-height:1.7;}
+.arc::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(0,229,255,.025) 3px,rgba(0,229,255,.025) 4px);pointer-events:none;z-index:1;opacity:0;transition:opacity .3s;}
+.arc:hover::before{opacity:1;}
+.ar-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:16px;}
+.acard{background:rgba(123,63,160,.07);border:1px solid rgba(123,63,160,.2);padding:22px;transition:border-color .3s;position:relative;overflow:hidden;}
+.acard:hover{border-color:rgba(123,63,160,.5);}
+.acard::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--purple),var(--cyan));opacity:0;transition:opacity .3s;}
+.acard:hover::before{opacity:1;}
+.acard-ico{font-family:'Share Tech Mono',monospace;font-size:11px;letter-spacing:1px;color:var(--cyan);margin-bottom:12px;display:block;}
+.acard h3{font-size:14px;margin-bottom:7px;}
+.acard p{font-size:12px;color:rgba(240,238,232,.58);line-height:1.75;}
+.abadge{display:inline-block;margin-top:11px;padding:2px 9px;background:rgba(0,229,255,.07);border:1px solid rgba(0,229,255,.25);font-family:'Share Tech Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--cyan);}
+
+#gallery{background:var(--black);}
+.imgwall{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:36px;}
+.iw{position:relative;overflow:hidden;cursor:pointer;background:#1a1a22;}
+.iw img{width:100%;display:block;aspect-ratio:1/1;object-fit:cover;filter:saturate(.8) brightness(.9);transition:transform .4s,filter .4s;}
+.iw:hover img{transform:scale(1.08);filter:saturate(1.2) brightness(1);}
+.iw-ov{position:absolute;inset:0;background:rgba(10,10,15,.55);opacity:0;transition:opacity .3s;display:flex;align-items:center;justify-content:center;}
+.iw:hover .iw-ov{opacity:1;}
+.iw-ov span{font-family:'Share Tech Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--cyan);text-align:center;padding:0 12px;}
+.iw.r2{grid-row:span 2;}
+.iw.r2 img{aspect-ratio:unset;height:100%;}
+.iw.c2{grid-column:span 2;}
+.iw.c2 img{aspect-ratio:2/1;}
+
+.lb{display:none;position:fixed;inset:0;z-index:1000;background:rgba(8,8,12,.97);align-items:center;justify-content:center;flex-direction:column;gap:0;}
+.lb.open{display:flex;}
+.lb-img-wrap{position:relative;max-width:90vw;max-height:85vh;display:flex;align-items:center;justify-content:center;}
+.lb img{max-width:90vw;max-height:85vh;object-fit:contain;display:block;}
+.lb-close{position:absolute;top:18px;right:24px;font-family:'Share Tech Mono',monospace;font-size:16px;color:var(--white);cursor:pointer;background:rgba(255,255,255,.07);border:none;padding:8px 14px;letter-spacing:2px;transition:background .2s;}
+.lb-close:hover{background:rgba(200,37,58,.5);}
+.lb-prev,.lb-next{position:absolute;top:50%;transform:translateY(-50%);font-size:22px;color:var(--white);cursor:pointer;background:rgba(255,255,255,.07);border:none;padding:16px 18px;transition:background .2s;z-index:2;}
+.lb-prev{left:0;} .lb-next{right:0;}
+.lb-prev:hover,.lb-next:hover{background:rgba(200,37,58,.45);}
+.lb-info{text-align:center;margin-top:14px;}
+.lb-title{font-size:14px;color:var(--white);font-weight:600;}
+.lb-count{font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:2px;color:var(--dim);margin-top:4px;}
+
+footer{position:relative;z-index:1;background:var(--deep);border-top:1px solid rgba(255,255,255,.06);padding:52px 48px 26px;}
+.fi{max-width:1120px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr;gap:44px;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,.06);}
+footer h4{font-size:13px;margin-bottom:10px;color:var(--white);}
+footer p,footer li{font-size:12px;color:var(--dim);line-height:1.9;}
+footer ul{list-style:none;}
+footer ul li a{color:var(--dim);text-decoration:none;}
+footer ul li a:hover{color:var(--gold);}
+.fb{max-width:1120px;margin:20px auto 0;display:flex;justify-content:space-between;font-family:'Share Tech Mono',monospace;font-size:9px;letter-spacing:2px;color:rgba(136,136,153,.4);}
+.fb .br{color:var(--gold);}
+
+.rv{opacity:0;transform:translateY(20px);transition:opacity .5s ease,transform .5s ease;}
+.rv.in{opacity:1;transform:none;}
+
+@media(max-width:1000px){
+  .step{grid-template-columns:48px 1fr;} .simg{display:none;}
+  .ar-cards{grid-template-columns:repeat(2,1fr);}
+  .imgwall{grid-template-columns:repeat(3,1fr);}
+}
+@media(max-width:768px){
+  nav ul{display:none;} nav{padding:11px 18px;}
+  .w{padding:60px 20px;}
+  h1{font-size:clamp(44px,12vw,80px);}
+  .hgrid,.btop,.ar-showcase{grid-template-columns:1fr;}
+  .arc.big{grid-column:span 1;}
+  .chaps{grid-template-columns:1fr 1fr;}
+  .spread{grid-template-columns:1fr 1fr;}
+  .sp.w2,.sp.w3{grid-column:span 1;}
+  .imgwall{grid-template-columns:repeat(2,1fr);}
+  .iw.r2{grid-row:span 1;} .iw.r2 img{aspect-ratio:1/1;height:auto;}
+  .iw.c2{grid-column:span 1;} .iw.c2 img{aspect-ratio:1/1;}
+  .d4{grid-template-columns:1fr 1fr;}
+  .fi{grid-template-columns:1fr;gap:24px;}
+  .fb{flex-direction:column;gap:5px;}
+  .hero-inner{padding:0 20px;}
+  .h-sc{right:20px;}
+  .step{grid-template-columns:44px 1fr;}
+  .ar-cards{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:480px){
+  .chaps{grid-template-columns:1fr;}
+  .spread{grid-template-columns:1fr;}
+  .imgwall{grid-template-columns:repeat(2,1fr);}
+  .ar-cards{grid-template-columns:1fr;}
+  .d4{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="file:///Users/dlulululu/Downloads/index_5.html#hero" style="color: var(--cyan);">XILAN ODYSSEY <em>// 西兰奇遇</em></a>
+  <ul>
+    <li><a href="file:///Users/dlulululu/Downloads/index_5.html#history" style="">History</a></li>
+    <li><a href="file:///Users/dlulululu/Downloads/index_5.html#process" style="">Making Process</a></li>
+    <li><a href="file:///Users/dlulululu/Downloads/index_5.html#beads">Bead Cover</a></li>
+    <li><a href="file:///Users/dlulululu/Downloads/index_5.html#popup">Pop-Up Book</a></li>
+    <li><a href="file:///Users/dlulululu/Downloads/index_5.html#ar">AR Experience</a></li>
+    <li><a href="file:///Users/dlulululu/Downloads/index_5.html#gallery">Gallery</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-slides">
+    <div class="hs" style="background-image:url(&#39;微信图片_20260616152821_791_2447.jpg&#39;)"></div>
+    <div class="hs" style="background-image:url(&#39;微信图片_20260602153452_78_2447.jpg&#39;)"></div>
+    <div class="hs" style="background-image:url(&#39;微信图片_20260616152826_794_2447.jpg&#39;)"></div>
+    <div class="hs on" style="background-image:url(&#39;微信图片_20260602152411_59_2447.jpg&#39;)"></div>
+    <div class="hs" style="background-image:url(&#39;微信图片_20260601192105_6_2447.jpg&#39;)"></div>
+  </div>
+  <div id="ptcl"><div class="pd" style="left: 27.4247%; width: 4px; height: 4px; background: rgb(200, 37, 58); animation-duration: 19.3269s; animation-delay: 5.59988s;"></div><div class="pd" style="left: 54.8103%; width: 6px; height: 6px; background: rgb(242, 193, 46); animation-duration: 22.2812s; animation-delay: 9.93171s;"></div><div class="pd" style="left: 65.4253%; width: 8px; height: 8px; background: rgb(46, 95, 163); animation-duration: 19.5975s; animation-delay: 1.55019s;"></div><div class="pd" style="left: 88.8634%; width: 4px; height: 4px; background: rgb(0, 229, 255); animation-duration: 14.9971s; animation-delay: 5.18434s;"></div><div class="pd" style="left: 32.4138%; width: 6px; height: 6px; background: rgb(123, 63, 160); animation-duration: 18.0932s; animation-delay: 4.81661s;"></div><div class="pd" style="left: 77.1781%; width: 8px; height: 8px; background: rgb(255, 255, 255); animation-duration: 17.4522s; animation-delay: 3.05082s;"></div><div class="pd" style="left: 57.1128%; width: 4px; height: 4px; background: rgb(200, 37, 58); animation-duration: 23.1834s; animation-delay: 0.000153162s;"></div><div class="pd" style="left: 58.837%; width: 6px; height: 6px; background: rgb(242, 193, 46); animation-duration: 15.5385s; animation-delay: 2.31446s;"></div><div class="pd" style="left: 21.9332%; width: 8px; height: 8px; background: rgb(46, 95, 163); animation-duration: 25.8393s; animation-delay: 6.08372s;"></div><div class="pd" style="left: 5.07893%; width: 4px; height: 4px; background: rgb(0, 229, 255); animation-duration: 25.0625s; animation-delay: 2.64172s;"></div><div class="pd" style="left: 43.8945%; width: 6px; height: 6px; background: rgb(123, 63, 160); animation-duration: 15.3658s; animation-delay: 6.21705s;"></div><div class="pd" style="left: 17.8621%; width: 8px; height: 8px; background: rgb(255, 255, 255); animation-duration: 15.7993s; animation-delay: 2.15572s;"></div><div class="pd" style="left: 58.6972%; width: 4px; height: 4px; background: rgb(200, 37, 58); animation-duration: 11.8977s; animation-delay: 5.22684s;"></div><div class="pd" style="left: 60.7915%; width: 6px; height: 6px; background: rgb(242, 193, 46); animation-duration: 17.4094s; animation-delay: 9.30123s;"></div><div class="pd" style="left: 97.4946%; width: 8px; height: 8px; background: rgb(46, 95, 163); animation-duration: 18.564s; animation-delay: 10.0744s;"></div><div class="pd" style="left: 30.7675%; width: 4px; height: 4px; background: rgb(0, 229, 255); animation-duration: 22.0142s; animation-delay: 4.12018s;"></div><div class="pd" style="left: 17.5898%; width: 6px; height: 6px; background: rgb(123, 63, 160); animation-duration: 17.0233s; animation-delay: 6.49058s;"></div><div class="pd" style="left: 4.66342%; width: 8px; height: 8px; background: rgb(255, 255, 255); animation-duration: 11.9785s; animation-delay: 7.14045s;"></div><div class="pd" style="left: 80.2553%; width: 4px; height: 4px; background: rgb(200, 37, 58); animation-duration: 17.7915s; animation-delay: 12.5186s;"></div><div class="pd" style="left: 28.9256%; width: 6px; height: 6px; background: rgb(242, 193, 46); animation-duration: 20.6477s; animation-delay: 9.77899s;"></div><div class="pd" style="left: 71.6485%; width: 8px; height: 8px; background: rgb(46, 95, 163); animation-duration: 10.1898s; animation-delay: 4.36516s;"></div><div class="pd" style="left: 82.3982%; width: 4px; height: 4px; background: rgb(0, 229, 255); animation-duration: 12.4046s; animation-delay: 2.66157s;"></div><div class="pd" style="left: 22.1013%; width: 6px; height: 6px; background: rgb(123, 63, 160); animation-duration: 11.0432s; animation-delay: 10.5241s;"></div><div class="pd" style="left: 26.6694%; width: 8px; height: 8px; background: rgb(255, 255, 255); animation-duration: 11.2549s; animation-delay: 11.0837s;"></div><div class="pd" style="left: 60.2011%; width: 4px; height: 4px; background: rgb(200, 37, 58); animation-duration: 26.378s; animation-delay: 3.0379s;"></div><div class="pd" style="left: 27.7015%; width: 6px; height: 6px; background: rgb(242, 193, 46); animation-duration: 16.6244s; animation-delay: 10.7616s;"></div><div class="pd" style="left: 56.7733%; width: 8px; height: 8px; background: rgb(46, 95, 163); animation-duration: 12.8204s; animation-delay: 13.4034s;"></div><div class="pd" style="left: 50.2798%; width: 4px; height: 4px; background: rgb(0, 229, 255); animation-duration: 26.0063s; animation-delay: 14.5613s;"></div><div class="pd" style="left: 53.4828%; width: 6px; height: 6px; background: rgb(123, 63, 160); animation-duration: 9.23668s; animation-delay: 9.40468s;"></div><div class="pd" style="left: 55.4395%; width: 8px; height: 8px; background: rgb(255, 255, 255); animation-duration: 9.68183s; animation-delay: 10.5074s;"></div><div class="pd" style="left: 53.9248%; width: 4px; height: 4px; background: rgb(200, 37, 58); animation-duration: 10.5529s; animation-delay: 4.40874s;"></div><div class="pd" style="left: 53.421%; width: 6px; height: 6px; background: rgb(242, 193, 46); animation-duration: 24.4074s; animation-delay: 14.5426s;"></div><div class="pd" style="left: 30.8556%; width: 8px; height: 8px; background: rgb(46, 95, 163); animation-duration: 15.7708s; animation-delay: 13.817s;"></div><div class="pd" style="left: 18.4229%; width: 4px; height: 4px; background: rgb(0, 229, 255); animation-duration: 18.982s; animation-delay: 5.7974s;"></div><div class="pd" style="left: 82.7182%; width: 6px; height: 6px; background: rgb(123, 63, 160); animation-duration: 17.6314s; animation-delay: 8.18833s;"></div><div class="pd" style="left: 71.4221%; width: 8px; height: 8px; background: rgb(255, 255, 255); animation-duration: 16.433s; animation-delay: 1.4042s;"></div><div class="pd" style="left: 46.1931%; width: 4px; height: 4px; background: rgb(200, 37, 58); animation-duration: 17.0021s; animation-delay: 13.9859s;"></div><div class="pd" style="left: 49.9465%; width: 6px; height: 6px; background: rgb(242, 193, 46); animation-duration: 19.1761s; animation-delay: 6.10589s;"></div><div class="pd" style="left: 97.7566%; width: 8px; height: 8px; background: rgb(46, 95, 163); animation-duration: 25.7866s; animation-delay: 7.80823s;"></div><div class="pd" style="left: 45.6496%; width: 4px; height: 4px; background: rgb(0, 229, 255); animation-duration: 22.9581s; animation-delay: 1.35481s;"></div><div class="pd" style="left: 98.1644%; width: 6px; height: 6px; background: rgb(123, 63, 160); animation-duration: 22.9198s; animation-delay: 9.28871s;"></div><div class="pd" style="left: 43.3742%; width: 8px; height: 8px; background: rgb(255, 255, 255); animation-duration: 17.4956s; animation-delay: 2.28656s;"></div></div>
+  <div class="hero-inner">
+    <div class="h-eye">Tujia Intangible Cultural Heritage · Creative Project · 2025</div>
+    <h1>XILAN<span class="g"> ODYSSEY</span></h1>
+    <div class="h-sub">西兰奇遇 · PIXEL BEAD POP-UP BOOK × AUGMENTED REALITY</div>
+    <p class="h-desc">The thousand-year-old Tujia weaving art of Xilankapu, reimagined through pixel aesthetics — blending handcrafted Hama beads, paper-engineered pop-ups, and augmented reality into a journey across time and dimension.</p>
+    <div class="h-btns">
+      <a href="file:///Users/dlulululu/Downloads/index_5.html#process" class="btn btn-r">Explore the Making Process →</a>
+      <a href="file:///Users/dlulululu/Downloads/index_5.html#gallery" class="btn btn-c">View All Images</a>
+    </div>
+  </div>
+  <div class="h-dots" id="hDots">
+    <div class="h-dot" onclick="gs(0)"></div>
+    <div class="h-dot" onclick="gs(1)"></div>
+    <div class="h-dot" onclick="gs(2)"></div>
+    <div class="h-dot on" onclick="gs(3)"></div>
+    <div class="h-dot" onclick="gs(4)"></div>
+  </div>
+  <div class="h-sc">SCROLL ▼</div>
+</section>
+
+<div class="div"></div>
+
+<!-- HISTORY -->
+<section id="history">
+  <div class="w">
+    <div class="eye">Cultural Origins</div>
+    <h2 class="stitle">What is <span class="g">Xilankapu</span>?</h2>
+    <p class="sbody">Xilankapu — meaning "earth-flower coverlet" in the Tujia language — is a traditional brocade weaving craft passed down through generations of the Tujia people in western Hunan and western Hubei. In 2006, it was inscribed on China's first National Intangible Cultural Heritage list. Renowned for its vivid colours and intricate geometric patterns, it carries deep Tujia sentiment toward nature, ancestors, and life itself.</p>
+    <div class="hgrid">
+      <div class="hcard rv in">
+        <h3>// History &amp; Weaving Technique</h3>
+        <p>Xilankapu traces its origins to the Qin-Han period, with a history of over two thousand years. Legend holds that Xilan, a Tujia weaving girl, gave her life to protect the secrets of the craft — imbuing it with a sacred, mythic dimension.</p>
+        <p>Weavers employ the "continuous warp, broken weft" pick-up technique, building geometric motifs in vivid colour against a black or deep-blue ground. A single fine piece may take months or even years to complete.</p>
+        <p>Motifs span flora, fauna, natural phenomena, and abstract geometry. Classic patterns include the "Oriole Flower," "Terrace Flower," and "Eight Hooks" — each bearing its own name and meaning, forming the most important unwritten chapter of Tujia history.</p>
+      </div>
+      <div class="tline rv in">
+        <div class="ti"><div class="ty">Qin–Han</div><div class="tt"><strong>Origins</strong> — Tujia ancestors weave geometric patterns on wooden looms; the first forms of Xilankapu emerge</div></div>
+        <div class="ti"><div class="ty">Tang–Song</div><div class="tt"><strong>Golden Age</strong> — The brocade tradition matures; "Tujia Silk" enters imperial tribute, with hundreds of distinct patterns</div></div>
+        <div class="ti"><div class="ty">Ming–Qing</div><div class="tt"><strong>Legends Spread</strong> — The tale of weaver Xilan becomes widely known, lending the craft deep humanist meaning</div></div>
+        <div class="ti"><div class="ty">2006</div><div class="tt"><strong>National ICH</strong> — Listed in the first batch of National Intangible Cultural Heritage representative projects</div></div>
+        <div class="ti"><div class="ty">Today</div><div class="tt"><strong>Creative Revival</strong> — Designers weave Xilankapu motifs into contemporary work; this project is one such deep exploration</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="div"></div>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="w">
+    <div class="eye">The Making Journey</div>
+    <h2 class="stitle">From Concept to <span class="g">Creation</span> · Six-Step Process</h2>
+    <p class="sbody">The project took months of meticulous craft — translating traditional brocade patterns into pixel art, then realising them across three distinct forms: handmade bead mosaics, paper-engineered pop-up spreads, and augmented reality. Every step is a dialogue between innovation and tradition.</p>
+
+    <div class="steps">
+
+      <div class="step rv in">
+        <div class="sn">01</div>
+        <div>
+          <span class="stag">RESEARCH · Field Study</span>
+          <h3>Immersing in Tujia Culture</h3>
+          <p>Systematic collection of traditional Xilankapu patterns, studying their geometric structures and colour logic. Tujia brocade motifs are built on highly abstracted geometry — a quality that maps remarkably well onto pixel art. Every pattern can be understood as a handwoven "pixel matrix."</p>
+          <div class="pills"><span class="pill pr">Pattern Study</span><span class="pill pg">Colour Analysis</span><span class="pill pc">Archive Research</span></div>
+        </div>
+        <div class="simg rv in" onclick="lb(&#39;微信图片_20260601192529_8_2447.jpg&#39;,&#39;Butterfly Motif Pixel Draft · Traditional Pattern Research&#39;)">
+          <img src="file:///Users/dlulululu/Downloads/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20260601192529_8_2447.jpg" alt="Butterfly Motif Pixel Draft">
+          <div class="simg-cap">REFERENCE · Butterfly Motif Pixel Draft</div>
+        </div>
+      </div>
+
+      <div class="step rv in">
+        <div class="sn">02</div>
+        <div>
+          <span class="stag">CONCEPT · Pixel Translation</span>
+          <h3>Redrawing Ancient Patterns on a Grid</h3>
+          <p>Using pixel art software, each Xilankapu motif is redrawn grid-square by grid-square. The protagonist Xilan's costume, butterfly totems, phoenix legends, swimming fish, mountain landscapes, and loom scenes are all unified into a consistent pixel visual language. A black-dominant palette stays faithful to the deep-ground tradition of the original brocade.</p>
+          <div class="pills"><span class="pill pc">Pixel Drawing</span><span class="pill pg">Character Design</span><span class="pill pb">Scene Building</span><span class="pill pr">Motif Pixelation</span></div>
+        </div>
+        <div class="simg rv in" onclick="lb(&#39;微信图片_20260601192527_7_2447.jpg&#39;,&#39;Cover Key Visual Pixel Design&#39;)">
+          <img src="file:///Users/dlulululu/Downloads/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20260601192527_7_2447.jpg" alt="Cover Key Visual Pixel Design">
+          <div class="simg-cap">DESIGN · Cover Key Visual Pixel Design</div>
+        </div>
+      </div>
+
+      <div class="step rv in">
+        <div class="sn">03</div>
+        <div>
+          <span class="stag">CRAFT · Bead Making</span>
+          <h3>Handcrafted Bead Cover · One Peg at a Time</h3>
+          <p>The cover and bookmark are assembled bead by bead using Hama iron beads. The pixel design is printed as a reference, then coloured beads are placed one at a time onto a pegboard — butterfly motifs, geometric borders, and the title text all realised in beads. Heat from an iron fuses them into a solid, rigid pixel panel.</p>
+          <div class="pills"><span class="pill pg">Hama Beads</span><span class="pill pr">Bead by Bead</span><span class="pill pc">Iron-Fused</span><span class="pill pp">Hand-Mounted</span></div>
+        </div>
+        <div class="simg rv in" onclick="lb(&#39;微信图片_20260601185446_1_2447.jpg&#39;,&#39;Bead Workstation Panorama · In Progress&#39;)">
+          <img src="file:///Users/dlulululu/Downloads/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20260601185446_1_2447.jpg" alt="Bead Workstation">
+          <div class="simg-cap">CRAFT · Bead Workstation Panorama</div>
+        </div>
+      </div>
+
+      <div class="step rv">
+        <div class="sn">04</div>
+        <div>
+          <span class="stag">PRINT &amp; CUT · Printing &amp; Pop-Up Engineering</span>
+          <h3>Interior Pages &amp; Pop-Up Mechanism Design</h3>
+          <p>Story spreads are printed on black card stock, each page featuring a unique pop-up structure: spiral vortexes, pixel mountains, schools of fish, and mythical phoenixes spring up as the page is turned, creating a miniature theatre. A pull-out drawer page reveals two distinct Xilankapu brocade patterns, letting readers experience the motif shift firsthand.</p>
+          <div class="pills"><span class="pill pb">Black Card Print</span><span class="pill pr">Pop-Up Structure</span><span class="pill pg">Pull-Out Pages</span><span class="pill pc">Slider Mechanics</span></div>
+        </div>
+        <div class="simg rv" onclick="lb(&#39;微信图片_20260602152935_64_2447.jpg&#39;,&#39;Brocade Pull-Out Page · Paper Engineering&#39;)">
+          <img src="file:///Users/dlulululu/Downloads/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20260602152935_64_2447.jpg" alt="Brocade Pull-Out Page">
+          <div class="simg-cap">STRUCTURE · Brocade Pull-Out Page</div>
+        </div>
+      </div>
+
+      <div class="step rv">
+        <div class="sn">05</div>
+        <div>
+          <span class="stag">BINDING · Book Binding</span>
+          <h3>Leporello Binding · Hardcover Slipcase</h3>
+          <p>The entire book uses a leporello (accordion) binding — it can be fully unfolded into a continuous long panorama, or folded into a compact hardcover slipcase. The bead mosaic cover is embedded in the front board; a red ribbon spine nods to the festive colour of Xilan's legend. Extras include a black-ground illustrated map with pixel icons of story locations, plus a small handmade bead ornament.</p>
+          <div class="pills"><span class="pill pg">Leporello</span><span class="pill pr">Hardcover Slipcase</span><span class="pill pc">Illustrated Map</span><span class="pill pp">Bead Ornament</span></div>
+        </div>
+        <div class="simg rv" onclick="lb(&#39;微信图片_20260601192105_6_2447.jpg&#39;,&#39;Leporello Fully Unfolded · Xilan Odyssey Complete&#39;)">
+          <img src="file:///Users/dlulululu/Downloads/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20260601192105_6_2447.jpg" alt="Leporello Unfolded">
+          <div class="simg-cap">BINDING · Leporello Fully Unfolded</div>
+        </div>
+      </div>
+
+      <div class="step rv">
+        <div class="sn">06</div>
+        <div>
+          <span class="stag">AR / DIGITAL · Digital Enhancement</span>
+          <h3>Augmented Reality · Pages Become a Digital Stage</h3>
+          <p>Specific pages contain embedded AR Magic Triggers. Scan them with a smartphone and digital animations overlay the physical book: vortexes spin in real space, a phoenix takes flight from a mountaintop, brocade patterns blaze with light. The AR experience is titled "Road of Culture · Xilan's Cultural Journey," extending the physical book into digital space.</p>
+          <div class="pills"><span class="pill pp">AR Trigger</span><span class="pill pc">Magic Trigger</span><span class="pill pb">Digital Overlay</span><span class="pill pg">Live Effects</span></div>
+        </div>
+        <div class="simg rv" onclick="lb(&#39;微信图片_20260616152821_791_2447.jpg&#39;,&#39;AR Cultural Journey Trigger Scene&#39;)">
+          <img src="file:///Users/dlulululu/Downloads/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20260616152821_791_2447.jpg" alt="AR Cultural Journey">
+          <div class="simg-cap">AR · Road of Culture Trigger Scene</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="div"></div>
+
+<!-- BEADS -->
+<section id="beads">
+  <div class="w">
+    <div class="eye">Cover Craft</div>
+    <h2 class="stitle">A <span class="r">Xilankapu</span> Built One Bead at a Time</h2>
+    <p class="sbody">The cover's key visual is realised through Hama iron-bead craft — butterfly motifs, geometric borders, and the title lettering all recreated with individual 5 mm colour beads. It is the most patience-testing, detail-demanding stage of the entire project.</p>
+
+    <div class="btop">
+      <div class="bvis rv" onclick="lb(&#39;微信图片_20260601185446_1_2447.jpg&#39;,&#39;Bead Workstation Panorama&#39;)">
+        <img src="file:///Users/dlulululu/Downloads/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20260601185446_1_2447.jpg" alt="Bead Workstation Panorama">
+        <div class="co tl"></div><div class="co br"></div>
+      </div>
+      <div class="binf rv">
+        <h3>Hama Iron-Bead Craft</h3>
+        <p>Following the pixel design as a guide, coloured beads are placed one by one onto a white pegboard by colour code, then fused with an iron. The technique translates brocade's thread-based medium into a resin-bead pixel matrix — a material shift from "line" to "dot."</p>
+        <p>Multiple bead panels progress simultaneously on the workstation, with each colour sorted into its own compartment and tweezers used for precise placement. The heavy use of black and white echoes the deep-ground tradition of original Xilankapu weaving.</p>
+        <div class="bstats">
+          <div class="bst"><span class="v">5mm</span><span class="l">Diameter per bead</span></div>
+          <div class="bst"><span class="v">1000s+</span><span class="l">Beads per panel</span></div>
+          <div class="bst"><span class="v">20+</span><span class="l">Colours used</span></div>
+          <div class="bst"><span class="v">100% Hand</span><span class="l">Every bead placed manually</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="d4" style="margin-top:28px;">
+      <div class="gi rv" onclick="lb(&#39;微信图片_20260601192105_6_2447.jpg&#39;,&#39;Leporello Unfolded &amp; Cover Display&#39;)">
+        <img src="file:///Users/dlulululu/Downloads/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20260601192105_6_2447.jpg" alt="Leporello Unfolded">
+        <div class="gi-ov"><div class="lbl">BOOK · Fully Unfolded</div><div class="ttl">Leporello &amp; Cover</div></div>
+      </div>
+      <div class="gi rv" onclick="lb(&#39;微信图片_20260601192527_7_2447.jpg&#39;,&#39;Cover Key Visual Pixel Design&#39;)">
+        <img src="file:///Users/dlulululu/Downloads/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20260601192527_7_2447.jpg" alt="Cover Pixel Design">
+        <div class="gi-ov"><div class="lbl">DESIGN · Cover</div><div class="ttl">Cover Pixel Design</div></div>
+      </div>
+      <div class="gi rv" onclick="lb(&#39;微信图片_20260601192529_8_2447.jpg&#39;,&#39;Butterfly Motif Pixel Design&#39;)">
+        <img src="file:///Users/dlulululu/Downloads/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20260601192529_8_2447.jpg" alt="Butterfly Motif Pixel Design">
+        <div class="gi-ov"><div class="lbl">DESIGN · Motif</div><div class="ttl">Butterfly Motif Pixel Draft</div></div>
+      </div>
+      <div class="gi rv" onclick="lb(&#39;微信图片_20260602153548_82_2447.jpg&#39;,&#39;Finished Book, Map &amp; Ornaments&#39;)">
+        <img src="file:///Users/dlulululu/Downloads/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20260602153548_82_2447.jpg" alt="Final Display">
+        <div class="gi-ov"><div class="lbl">FINAL · Complete</div><div class="ttl">Slipcase &amp; Accessories</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="div"></div>
+
+<!-- POPUP BOOK -->
+<section id="popup">
+  <div class="w">
+    <div class="eye">Pop-Up Book Interior</div>
+    <h2 class="stitle">Opening <span class="g">Every Page</span> of the Story</h2>
+    <p class="sbody">Xilan Odyssey follows a young girl named Xilan as she falls into a fantastical world built of pixels and brocade, befriending fish, phoenixes, and weavers, and carrying forward the spirit and craft of Xilankapu. The leporello binding means every page-turn reveals a new popping scene.</p>
+
+    <div class="chaps">
+      <div class="ch rv"><span class="ch-n">// CH.01</span><div class="ch-ico">🌀</div><h3>Into the Vortex</h3><p>Xilan meets her brother at the village gate. Her pura-flower cloth spirals into a vortex, and clutching a white pura flower, she tumbles into a radiant pixel world.</p></div>
+      <div class="ch rv"><span class="ch-n">// CH.02</span><div class="ch-ico">🐟</div><h3>Meeting the Coloured Fish</h3><p>Vivid fish drift slowly through the water, a small shoal swimming toward her. Xilan sets foot on a mountain path and ventures deeper into this strange new world.</p></div>
+      <div class="ch rv"><span class="ch-n">// CH.03</span><div class="ch-ico">🧶</div><h3>The Weaving Chamber</h3><p>A timid child meets the Master Weaver before the palace. Xilan encounters a magical loom, and a quiet friendship blooms as time flows gently by.</p></div>
+      <div class="ch rv"><span class="ch-n">// CH.04</span><div class="ch-ico">🐦</div><h3>The Phoenix Appears</h3><p>At last they encounter the all-powerful Phoenix — legend says it can solve any problem. Full of hope, the companions joyfully pour out their troubles to the great spirit bird.</p></div>
+      <div class="ch rv"><span class="ch-n">// CH.05</span><div class="ch-ico">⛰️</div><h3>Summit of the Sacred Mountain</h3><p>At dawn, Xilan and her companions set off together toward the world's edge — atop the Sacred Mountain waits a spirit phoenix named Xianli.</p></div>
+      <div class="ch rv"><span class="ch-n">// CH.06</span><div class="ch-ico">✨</div><h3>Homeward &amp; Legacy</h3><p>Xilan resolves to help her companions, then bids a quiet farewell. Carrying the secrets and mission of Xilankapu weaving, she begins her journey back to the real world.</p></div>
+    </div>
+
+    <div class="spread">
+      <div class="sp w3 rv" onclick="lb(&#39;微信图片_20260601192105_6_2447.jpg&#39;,&#39;Full Leporello Panorama&#39;)">
+        <img src="file:///Users/dlulululu/Downloads/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20260601192105_6_2447.jpg" alt="Full Leporello Panorama" style="aspect-ratio:21/9;object-fit:cover;">
+        <div class="sp-cap"><span class="t">▶</span>Full Leporello Panorama · Xilan Odyssey</div>
+      </div>
+      <div class="sp rv" onclick="lb(&#39;微信图片_20260602152139_57_2447.jpg&#39;,&#39;CH.01 Vortex Pop-Up Spread&#39;)">
+        <img src="file:///Users/dlulululu/Downloads/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20260602152139_57_2447.jpg" alt="Vortex Pop-Up Spread">
+        <div class="sp-cap"><span class="t">CH.01</span>Vortex Pop-Up Spread</div>
+      </div>
+      <div class="sp rv" onclick="lb(&#39;微信图片_20260602152411_59_2447.jpg&#39;,&#39;CH.02 Fish Shoal Pop-Up&#39;)">
+        <img src="file:///Users/dlulululu/Downloads/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20260602152411_59_2447.jpg" alt="Fish Shoal Pop-Up">
+        <div class="sp-cap"><span class="t">CH.02</span>Fish Shoal Pop-Up</div>
+      </div>
+      <div class="sp rv" onclick="lb(&#39;微信图片_20260602152640_61_2447.jpg&#39;,&#39;CH.04 Phoenix Pop-Up&#39;)">
+        <img src="file:///Users/dlulululu/Downloads/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20260602152640_61_2447.jpg" alt="Phoenix Pop-Up">
+        <div class="sp-cap"><span class="t">CH.04</span>Phoenix Pop-Up</div>
+      </div>
+      <div class="sp rv" onclick="lb(&#39;微信图片_20260602152748_62_2447.jpg&#39;,&#39;Interactive · Butterfly Slider Mechanism&#39;)">
+        <img src="file:///Users/dlulululu/Downloads/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20260602152748_62_2447.jpg" alt="Butterfly Slider">
+        <div class="sp-cap"><span class="t">Interactive</span>Butterfly Slider Mechanism</div>
+      </div>
+      <div class="sp rv" onclick="lb(&#39;微信图片_20260602153356_73_2447.jpg&#39;,&#39;CH.02 Underwater Creatures Scene&#39;)">
+        <img src="file:///Users/dlulululu/Downloads/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20260602153356_73_2447.jpg" alt="Underwater Scene">
+        <div class="sp-cap"><span class="t">CH.02</span>Underwater Creatures Scene</div>
+      </div>
+      <div class="sp w2 rv" onclick="lb(&#39;微信图片_20260602152935_64_2447.jpg&#39;,&#39;Interactive · Xilankapu Brocade Pull-Out Page (Purple Palette)&#39;)">
+        <img src="file:///Users/dlulululu/Downloads/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20260602152935_64_2447.jpg" alt="Brocade Pull-Out" style="aspect-ratio:2/1;object-fit:cover;">
+        <div class="sp-cap"><span class="t">Interactive</span>Xilankapu Brocade Pull-Out Page · Purple Palette</div>
+      </div>
+      <div class="sp rv" onclick="lb(&#39;微信图片_20260602153241_72_2447.jpg&#39;,&#39;Motif · Switches to Red Palette on Pull-Out&#39;)">
+        <img src="file:///Users/dlulululu/Downloads/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20260602153241_72_2447.jpg" alt="Motif Palette Shift">
+        <div class="sp-cap"><span class="t">Motif</span>Switches to Red Palette on Pull-Out</div>
+      </div>
+      <div class="sp rv" onclick="lb(&#39;微信图片_20260602153452_78_2447.jpg&#39;,&#39;CH.05 Sacred Mountain Pop-Up&#39;)">
+        <img src="file:///Users/dlulululu/Downloads/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20260602153452_78_2447.jpg" alt="Sacred Mountain Pop-Up">
+        <div class="sp-cap"><span class="t">CH.05</span>Sacred Mountain Pop-Up</div>
+      </div>
+      <div class="sp w3 rv" onclick="lb(&#39;微信图片_20260602153548_82_2447.jpg&#39;,&#39;Complete Set · Book, Map &amp; Bead Ornaments&#39;)">
+        <img src="file:///Users/dlulululu/Downloads/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20260602153548_82_2447.jpg" alt="Complete Set Display" style="aspect-ratio:21/9;object-fit:cover;">
+        <div class="sp-cap"><span class="t">Complete</span>Physical Book · Illustrated Map · Bead Ornaments — Full Display</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="div"></div>
+
+<!-- AR -->
+<section id="ar">
+  <div class="w">
+    <div class="eye">Digital Augmented Reality</div>
+    <h2 class="stitle">When the Page Meets <span class="g">AR</span></h2>
+    <p class="sbody">Certain pages contain embedded "Magic Trigger" patterns. Scan them with a smartphone AR app and digital animations layer over the physical book — seamlessly merging the physical and the virtual. The AR experience is titled "Road of Culture · Xilan's Cultural Journey."</p>
+
+    <div class="ar-showcase">
+      <div class="arc big rv" onclick="lb(&#39;微信图片_20260616152821_791_2447.jpg&#39;,&#39;AR · Road of Culture — Xilan\&#39;s Cultural Journey&#39;)">
+        <img src="file:///Users/dlulululu/Downloads/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20260616152821_791_2447.jpg" alt="AR Cultural Journey">
+        <div class="arc-cap">
+          <div class="arc-badge">▶ AR SCAN ACTIVE · MAGIC TRIGGER DETECTED</div>
+          <h3>"Road of Culture" · Xilan's Cultural Journey</h3>
+          <p>Scan the Xilan character page and the AR layer overlays colourful light trails, soaring birds and butterflies; a dialogue box surfaces: "Explore Xilan's journey to break free through the art of weaving."</p>
+        </div>
+      </div>
+
+      <div class="arc rv" onclick="lb(&#39;微信图片_20260616152823_792_2447.jpg&#39;,&#39;AR · Sacred Mountain Flora Data Eco-Visualisation&#39;)">
+        <img src="file:///Users/dlulululu/Downloads/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20260616152823_792_2447.jpg" alt="AR Sacred Mountain">
+        <div class="arc-cap">
+          <div class="arc-badge">[ FLORA DATA ]</div>
+          <h3>Sacred Mountain · Eco-Data Visualisation</h3>
+          <p>An AR grid covers the full page spread; a phoenix soars from the mountaintop as pixel brocade-pattern halos and a rainbow spectrum panel appear to the right.</p>
+        </div>
+      </div>
+
+      <div class="arc rv" onclick="lb(&#39;微信图片_20260616152824_793_2447.jpg&#39;,&#39;AR · Brocade Pattern Particle Stream Enhancement&#39;)">
+        <img src="file:///Users/dlulululu/Downloads/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20260616152824_793_2447.jpg" alt="AR Brocade Enhancement">
+        <div class="arc-cap">
+          <div class="arc-badge">[ PATTERN ALIVE ]</div>
+          <h3>Brocade Motifs · Particle Stream Enhancement</h3>
+          <p>The AR layer wraps brocade patterns in flowing particle streams; spirit birds flutter their wings; a rainbow spectrum bursts into view — ancient motifs spring to digital life in the phone's lens.</p>
+        </div>
+      </div>
+
+      <div class="arc big rv" onclick="lb(&#39;微信图片_20260616152826_794_2447.jpg&#39;,&#39;AR · Magic Vortex Portal&#39;)">
+        <img src="file:///Users/dlulululu/Downloads/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20260616152826_794_2447.jpg" alt="AR Vortex">
+        <div class="arc-cap">
+          <div class="arc-badge">[ MAGIC VORTEX · AR SCAN IN PROGRESS ]</div>
+          <h3>Vortex Portal · Pixel Dimension Crossing</h3>
+          <p>The physical vortex pop-up page and the spinning light ring on the phone screen appear in the same frame — physical and digital coexist in one image, creating an intense sense of spatial dimension-crossing.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="ar-cards">
+      <div class="acard rv"><span class="acard-ico">AR 01</span><h3>Cultural Journey Trigger</h3><p>The Xilan character page embeds a Magic Trigger. Scan to activate rainbow light trails, butterfly animations, and a story introduction overlay — extending the character's background into digital narrative.</p><span class="abadge">CULTURAL JOURNEY</span></div>
+      <div class="acard rv"><span class="acard-ico">AR 02</span><h3>Sacred Mountain Data Layer</h3><p>A high-tech AR grid overlays the mountain page. "Flora Data" labels tag ecological data points; phoenix flight animation fuses mythological imagery with tech aesthetics.</p><span class="abadge">FLORA DATA</span></div>
+      <div class="acard rv"><span class="acard-ico">AR 03</span><h3>Living Brocade Layer</h3><p>Particle light streams flow around the brocade patterns; a spirit bird flaps its wings in flight; a rainbow spectrum pops out — a thousand-year-old motif gains digital life through the camera lens.</p><span class="abadge">PATTERN ALIVE</span></div>
+      <div class="acard rv"><span class="acard-ico">AR 04</span><h3>Magic Vortex Portal</h3><p>The most spectacular AR scene — the physical vortex pop-up and the rotating light ring on-screen appear together, physical and digital coexisting in a single shot of reality.</p><span class="abadge">MAGIC VORTEX</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="div"></div>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="w">
+    <div class="eye">Image Collection</div>
+    <h2 class="stitle">All <span class="g">17 Images</span> at a Glance</h2>
+    <p class="sbody">From the bead workstation and pixel design drafts to every pop-up book spread and live AR captures — click any image to view full-screen and browse left or right through the set.</p>
+
+    <div class="imgwall" style="margin-top:28px;">
+      <div class="iw c2 rv" onclick="lb(&#39;微信图片_20260601185446_1_2447.jpg&#39;,&#39;Bead Workstation Panorama&#39;)">
+        <img src="file:///Users/dlulululu/Downloads/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20260601185446_1_2447.jpg" alt="Bead Workstation">
+        <div class="iw-ov"><span>Bead Workstation Panorama</span></div>
+      </div>
+      <div class="iw rv" onclick="lb(&#39;微信图片_20260601192527_7_2447.jpg&#39;,&#39;Cover Key Visual Pixel Draft&#39;)">
+        <img src="file:///Users/dlulululu/Downloads/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20260601192527_7_2447.jpg" alt="Cover Pixel Draft">
+        <div class="iw-ov"><span>Cover Pixel Draft</span></div>
+      </div>
+      <div class="iw rv" onclick="lb(&#39;微信图片_20260601192529_8_2447.jpg&#39;,&#39;Butterfly Motif Pixel Draft&#39;)">
+        <img src="file:///Users/dlulululu/Downloads/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20260601192529_8_2447.jpg" alt="Butterfly Motif Pixel Draft">
+        <div class="iw-ov"><span>Butterfly Motif Pixel Draft</span></div>
+      </div>
+      <div class="iw r2 rv" onclick="lb(&#39;微信图片_20260601192105_6_2447.jpg&#39;,&#39;Full Leporello Panorama&#39;)">
+        <img src="file:///Users/dlulululu/Downloads/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20260601192105_6_2447.jpg" alt="Leporello Panorama">
+        <div class="iw-ov"><span>Full Leporello Panorama</span></div>
+      </div>
+      <div class="iw rv" onclick="lb(&#39;微信图片_20260602152139_57_2447.jpg&#39;,&#39;CH.01 Vortex Pop-Up&#39;)">
+        <img src="file:///Users/dlulululu/Downloads/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20260602152139_57_2447.jpg" alt="Vortex Pop-Up">
+        <div class="iw-ov"><span>CH.01 Vortex Pop-Up</span></div>
+      </div>
+      <div class="iw rv" onclick="lb(&#39;微信图片_20260602152411_59_2447.jpg&#39;,&#39;CH.02 Fish Shoal Pop-Up&#39;)">
+        <img src="file:///Users/dlulululu/Downloads/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20260602152411_59_2447.jpg" alt="Fish Shoal Pop-Up">
+        <div class="iw-ov"><span>CH.02 Fish Shoal Pop-Up</span></div>
+      </div>
+      <div class="iw rv" onclick="lb(&#39;微信图片_20260602152640_61_2447.jpg&#39;,&#39;CH.04 Phoenix Pop-Up&#39;)">
+        <img src="file:///Users/dlulululu/Downloads/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20260602152640_61_2447.jpg" alt="Phoenix Pop-Up">
+        <div class="iw-ov"><span>CH.04 Phoenix Pop-Up</span></div>
+      </div>
+      <div class="iw rv" onclick="lb(&#39;微信图片_20260602152748_62_2447.jpg&#39;,&#39;Butterfly Slider Mechanism&#39;)">
+        <img src="file:///Users/dlulululu/Downloads/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20260602152748_62_2447.jpg" alt="Butterfly Slider">
+        <div class="iw-ov"><span>Butterfly Slider Mechanism</span></div>
+      </div>
+      <div class="iw c2 rv" onclick="lb(&#39;微信图片_20260602152935_64_2447.jpg&#39;,&#39;Brocade Pull-Out Page&#39;)">
+        <img src="file:///Users/dlulululu/Downloads/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20260602152935_64_2447.jpg" alt="Brocade Pull-Out">
+        <div class="iw-ov"><span>Brocade Pull-Out Page</span></div>
+      </div>
+      <div class="iw rv" onclick="lb(&#39;微信图片_20260602153241_72_2447.jpg&#39;,&#39;Brocade Motif Palette Shift&#39;)">
+        <img src="file:///Users/dlulululu/Downloads/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20260602153241_72_2447.jpg" alt="Motif Palette Shift">
+        <div class="iw-ov"><span>Brocade Motif Palette Shift</span></div>
+      </div>
+      <div class="iw rv" onclick="lb(&#39;微信图片_20260602153356_73_2447.jpg&#39;,&#39;Underwater Creatures Scene&#39;)">
+        <img src="file:///Users/dlulululu/Downloads/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20260602153356_73_2447.jpg" alt="Underwater Scene">
+        <div class="iw-ov"><span>Underwater Creatures Scene</span></div>
+      </div>
+      <div class="iw rv" onclick="lb(&#39;微信图片_20260602153452_78_2447.jpg&#39;,&#39;CH.05 Sacred Mountain Pop-Up&#39;)">
+        <img src="file:///Users/dlulululu/Downloads/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20260602153452_78_2447.jpg" alt="Sacred Mountain Pop-Up">
+        <div class="iw-ov"><span>CH.05 Sacred Mountain Pop-Up</span></div>
+      </div>
+      <div class="iw rv" onclick="lb(&#39;微信图片_20260602153548_82_2447.jpg&#39;,&#39;Complete Set Display&#39;)">
+        <img src="file:///Users/dlulululu/Downloads/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20260602153548_82_2447.jpg" alt="Complete Set Display">
+        <div class="iw-ov"><span>Complete Set Display</span></div>
+      </div>
+      <div class="iw c2 rv" onclick="lb(&#39;微信图片_20260616152821_791_2447.jpg&#39;,&#39;AR · Cultural Journey&#39;)">
+        <img src="file:///Users/dlulululu/Downloads/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20260616152821_791_2447.jpg" alt="AR Cultural Journey">
+        <div class="iw-ov"><span>AR · Cultural Journey</span></div>
+      </div>
+      <div class="iw rv" onclick="lb(&#39;微信图片_20260616152823_792_2447.jpg&#39;,&#39;AR · Sacred Mountain Flora Data&#39;)">
+        <img src="file:///Users/dlulululu/Downloads/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20260616152823_792_2447.jpg" alt="AR Sacred Mountain">
+        <div class="iw-ov"><span>AR · Sacred Mountain Flora Data</span></div>
+      </div>
+      <div class="iw rv" onclick="lb(&#39;微信图片_20260616152824_793_2447.jpg&#39;,&#39;AR · Brocade Pattern Enhancement&#39;)">
+        <img src="file:///Users/dlulululu/Downloads/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20260616152824_793_2447.jpg" alt="AR Brocade Enhancement">
+        <div class="iw-ov"><span>AR · Brocade Pattern Enhancement</span></div>
+      </div>
+      <div class="iw c2 rv" onclick="lb(&#39;微信图片_20260616152826_794_2447.jpg&#39;,&#39;AR · Magic Vortex Portal&#39;)">
+        <img src="file:///Users/dlulululu/Downloads/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20260616152826_794_2447.jpg" alt="AR Vortex Portal">
+        <div class="iw-ov"><span>AR · Magic Vortex Portal</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="div"></div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="fi">
+    <div>
+      <h4>XILAN ODYSSEY · 西兰奇遇</h4>
+      <p>With pixels as the brush and beads as the ink, through the pop-up book as medium and AR as the window,<br>bringing the Tujia Xilankapu intangible cultural heritage into the contemporary eye.</p>
+      <p style="margin-top:9px;color:rgba(136,136,153,.4);">This project is a design and creative work dedicated to the innovative dissemination and preservation of intangible cultural heritage.</p>
+    </div>
+    <div>
+      <h4>Navigation</h4>
+      <ul>
+        <li><a href="file:///Users/dlulululu/Downloads/index_5.html#history">Xilankapu History</a></li>
+        <li><a href="file:///Users/dlulululu/Downloads/index_5.html#process">Making Process (6 Steps)</a></li>
+        <li><a href="file:///Users/dlulululu/Downloads/index_5.html#beads">Bead Cover Craft</a></li>
+        <li><a href="file:///Users/dlulululu/Downloads/index_5.html#popup">Pop-Up Book Interior</a></li>
+        <li><a href="file:///Users/dlulululu/Downloads/index_5.html#ar">AR / Digital Experience</a></li>
+        <li><a href="file:///Users/dlulululu/Downloads/index_5.html#gallery">Full Gallery</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Media Forms</h4>
+      <ul>
+        <li>Hama Iron-Fused Beads</li>
+        <li>Pixel Art Design</li>
+        <li>Paper-Engineered Pop-Ups</li>
+        <li>Leporello Hardcover Binding</li>
+        <li>AR Augmented Reality</li>
+      </ul>
+    </div>
+  </div>
+  <div class="fb">
+    <span class="br">XILAN ODYSSEY · 西兰奇遇</span>
+    <span>Tujia Xilankapu Intangible Cultural Heritage Creative Design Project © 2025</span>
+  </div>
+</footer>
+
+<!-- LIGHTBOX -->
+<div class="lb" id="lbx">
+  <button class="lb-close" onclick="lbc()">✕ ESC</button>
+  <div class="lb-img-wrap">
+    <button class="lb-prev" onclick="lbn(-1)">‹</button>
+    <img id="lbimg" src="file:///Users/dlulululu/Downloads/index_5.html" alt="">
+    <button class="lb-next" onclick="lbn(1)">›</button>
+  </div>
+  <div class="lb-info">
+    <div class="lb-title" id="lbtitle"></div>
+    <div class="lb-count" id="lbcount"></div>
+  </div>
+</div>
+
+<script>
+/* HERO SLIDESHOW */
+let si = 0;
+const sls = document.querySelectorAll('.hs');
+const dts = document.querySelectorAll('.h-dot');
+function gs(n) {
+  sls[si].classList.remove('on'); dts[si].classList.remove('on');
+  si = (n + sls.length) % sls.length;
+  sls[si].classList.add('on'); dts[si].classList.add('on');
+}
+setInterval(() => gs(si + 1), 5000);
+
+/* PARTICLES */
+const pc = document.getElementById('ptcl');
+const cls = ['#C8253A','#F2C12E','#2E5FA3','#00E5FF','#7B3FA0','#ffffff'];
+for (let i = 0; i < 42; i++) {
+  const d = document.createElement('div'); d.className = 'pd';
+  const s = [4,6,8][i%3];
+  d.style.cssText = `left:${Math.random()*100}%;width:${s}px;height:${s}px;background:${cls[i%6]};animation-duration:${9+Math.random()*18}s;animation-delay:${Math.random()*15}s;`;
+  pc.appendChild(d);
+}
+
+/* LIGHTBOX */
+const wallImgs = [];
+const wallLabels = [];
+document.querySelectorAll('.iw[onclick]').forEach(el => {
+  const m = el.getAttribute('onclick').match(/lb\('([^']+)','([^']*)'\)/);
+  if (m) { wallImgs.push(m[1]); wallLabels.push(m[2]); }
+});
+const extraImgs = []; const extraLabels = [];
+document.querySelectorAll('[onclick^="lb("]').forEach(el => {
+  const m = el.getAttribute('onclick').match(/lb\('([^']+)','([^']*)'\)/);
+  if (m && !wallImgs.includes(m[1])) { extraImgs.push(m[1]); extraLabels.push(m[2]); }
+});
+const allI = [...wallImgs, ...extraImgs];
+const allL = [...wallLabels, ...extraLabels];
+
+let lbi = 0;
+function lb(src, label) {
+  const idx = allI.indexOf(src);
+  lbi = idx >= 0 ? idx : 0;
+  document.getElementById('lbimg').src = src;
+  document.getElementById('lbtitle').textContent = label || '';
+  document.getElementById('lbcount').textContent = (lbi+1) + ' / ' + allI.length;
+  document.getElementById('lbx').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function lbc() {
+  document.getElementById('lbx').classList.remove('open');
+  document.body.style.overflow = '';
+}
+function lbn(d) {
+  lbi = (lbi + d + allI.length) % allI.length;
+  document.getElementById('lbimg').src = allI[lbi];
+  document.getElementById('lbtitle').textContent = allL[lbi] || '';
+  document.getElementById('lbcount').textContent = (lbi+1) + ' / ' + allI.length;
+}
+document.getElementById('lbx').addEventListener('click', function(e) {
+  if (e.target === this) lbc();
+});
+document.addEventListener('keydown', e => {
+  if (!document.getElementById('lbx').classList.contains('open')) return;
+  if (e.key === 'Escape') lbc();
+  if (e.key === 'ArrowRight') lbn(1);
+  if (e.key === 'ArrowLeft') lbn(-1);
+});
+
+/* SCROLL REVEAL */
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+}, { threshold: 0.07 });
+document.querySelectorAll('.rv').forEach(el => obs.observe(el));
+
+/* NAV ACTIVE HIGHLIGHT */
+const navLinks = document.querySelectorAll('nav a[href^="#"]');
+const sections = document.querySelectorAll('section[id]');
+window.addEventListener('scroll', () => {
+  let cur = '';
+  sections.forEach(s => { if (window.scrollY >= s.offsetTop - 120) cur = s.id; });
+  navLinks.forEach(a => {
+    a.style.color = a.getAttribute('href') === '#' + cur ? 'var(--cyan)' : '';
+  });
+}, { passive: true });
+</script>
+
+
+</body></html>
